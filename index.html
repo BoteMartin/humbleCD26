@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUMBLE+ x BOTE — Collagen Days 2026</title>
+    <title>HUMBLE+ x BOTE · Collagen Days 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -65,7 +65,7 @@
             opacity:0;pointer-events:none;transition:opacity 0.5s ease;
         }
         .slide.active{opacity:1;pointer-events:auto}
-        .slide-inner{width:100%;max-width:920px}
+        .slide-inner{width:100%;max-width:860px}
 
         .rv{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s var(--ease)}
         .slide.active .rv{opacity:1;transform:translateY(0)}
@@ -73,7 +73,6 @@
         .slide.active .rv.d2{transition-delay:.16s}
         .slide.active .rv.d3{transition-delay:.24s}
         .slide.active .rv.d4{transition-delay:.32s}
-        .slide.active .rv.d5{transition-delay:.40s}
 
         @media(prefers-reduced-motion:reduce){
             .rv{transition:none!important;opacity:1!important;transform:none!important}
@@ -102,11 +101,10 @@
         .tag{font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
         .heading{font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:300;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem}
         .heading strong{font-weight:600}
-        .desc{font-size:0.92rem;line-height:1.7;color:var(--text-sec);max-width:640px}
+        .desc{font-size:0.92rem;line-height:1.7;color:var(--text-sec);max-width:620px}
         .desc strong{color:var(--text);font-weight:600}
-        .desc + .desc{margin-top:.75rem}
 
-        /* Deliverable hero */
+        /* Hero */
         .hero-n{
             font-size:clamp(4.5rem,10vw,6.5rem);font-weight:700;
             color:var(--gold);line-height:1;margin:1.5rem 0 .25rem;
@@ -118,40 +116,32 @@
 
         /* Info card rows */
         .ic{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:1.5rem}
-        .ir{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--border);gap:1rem}
+        .ir{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);gap:1rem}
         .ir:last-child{border-bottom:none}
-        .ir-l{font-size:0.82rem;font-weight:500;color:var(--text-sec);flex:1}
-        .ir-sub{font-size:0.72rem;color:var(--text-mute);margin-top:.2rem}
-        .ir-v{font-size:0.9rem;font-weight:600;white-space:nowrap}
+        .ir-l{font-size:0.88rem;font-weight:500;color:var(--text);flex:1}
+        .ir-sub{font-size:0.72rem;color:var(--text-mute);margin-top:.2rem;font-weight:400}
+        .ir-v{font-size:0.9rem;font-weight:600;white-space:nowrap;color:var(--text-sec)}
         .ir.hl{background:var(--gold-dim)}
         .ir.hl .ir-l,.ir.hl .ir-v{color:var(--gold);font-weight:700}
         .ir.gesture{background:rgba(200,169,110,0.05)}
         .ir.gesture .ir-v{color:var(--gold-soft)}
-        .ir-l strong{color:var(--text);font-weight:600}
 
-        /* Bullet grid (strategy amont) */
-        .bg-grid{
-            margin-top:1.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;
+        /* Strat : 3 cards simples */
+        .strat{
+            margin-top:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;
         }
-        .bg-cell{
+        .strat-card{
             background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-            padding:1rem 1.25rem;display:flex;gap:.85rem;align-items:flex-start;
+            padding:1.5rem 1.25rem;
             transition:border-color .3s;
         }
-        .bg-cell:hover{border-color:var(--gold-border)}
-        .bg-dot{
-            width:6px;height:6px;border-radius:50%;background:var(--gold);
-            margin-top:.5rem;flex-shrink:0;box-shadow:0 0 8px rgba(200,169,110,0.5);
+        .strat-card:hover{border-color:var(--gold-border)}
+        .strat-n{
+            font-size:0.7rem;font-weight:700;color:var(--gold);
+            letter-spacing:.2em;margin-bottom:.75rem;
         }
-        .bg-t{font-size:0.82rem;font-weight:600;color:var(--text);line-height:1.4}
-        .bg-d{font-size:0.72rem;color:var(--text-mute);margin-top:.15rem;line-height:1.45}
-
-        .note{
-            margin-top:1.25rem;padding:.85rem 1.25rem;
-            background:var(--gold-dim);border-left:2px solid var(--gold);border-radius:4px;
-            font-size:0.78rem;color:var(--gold-soft);line-height:1.6;
-        }
-        .note strong{color:var(--gold);font-weight:700}
+        .strat-t{font-size:0.95rem;font-weight:600;color:var(--text);margin-bottom:.4rem;line-height:1.35}
+        .strat-d{font-size:0.78rem;color:var(--text-mute);line-height:1.5}
 
         /* Tranches */
         .tranches{
@@ -184,29 +174,28 @@
             background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
             display:flex;justify-content:space-between;align-items:center;gap:1rem;
         }
-        .calcul-l{font-size:0.78rem;color:var(--text-sec)}
+        .calcul-l{font-size:0.85rem;color:var(--text-sec)}
         .calcul-l strong{color:var(--text);font-weight:600}
-        .calcul-v{font-size:1.1rem;font-weight:700;color:var(--gold);white-space:nowrap}
+        .calcul-v{font-size:1.15rem;font-weight:700;color:var(--gold);white-space:nowrap}
 
-        /* Inclus card */
+        /* Inclus */
         .inclus{
             margin-top:1.5rem;
             background:var(--surface);border:1px solid var(--border);
-            border-radius:var(--r);padding:1.25rem 1.5rem;
+            border-radius:var(--r);padding:1.35rem 1.5rem;
         }
         .inclus-t{
             font-size:0.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-            color:var(--gold);margin-bottom:.85rem;
+            color:var(--gold);margin-bottom:1rem;
         }
-        .inclus-l{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+        .inclus-l{list-style:none;display:flex;flex-direction:column;gap:.7rem}
         .inclus-l li{
-            font-size:0.85rem;color:var(--text-sec);padding-left:1.25rem;position:relative;line-height:1.5;
+            font-size:0.88rem;color:var(--text);padding-left:1.35rem;position:relative;line-height:1.5;font-weight:500;
         }
         .inclus-l li::before{
-            content:'';position:absolute;left:0;top:.6rem;
+            content:'';position:absolute;left:0;top:.65rem;
             width:5px;height:5px;border-radius:50%;background:var(--gold);
         }
-        .inclus-l li strong{color:var(--text);font-weight:600}
 
         /* Recap */
         .recap{margin-top:1.25rem;display:flex;flex-direction:column;gap:.65rem}
@@ -258,7 +247,7 @@
         @media(max-width:900px){
             .slide{padding:4rem 3rem 5.5rem}
             .brand{top:1.5rem;right:2rem}
-            .bg-grid{grid-template-columns:1fr}
+            .strat{grid-template-columns:1fr;gap:.6rem}
         }
 
         @media(max-width:680px){
@@ -266,14 +255,14 @@
             .brand{top:1.25rem;right:1.5rem;font-size:.6rem}
             .heading{font-size:1.5rem;margin-bottom:.75rem}
             .tag{margin-bottom:.5rem}
-            .desc{font-size:.82rem}
+            .desc{font-size:.85rem}
             .hero-n{font-size:4rem}
             .nav{bottom:1rem}
             .counter{bottom:1.25rem;right:1.5rem}
-            .ir{padding:.85rem 1.1rem}
+            .ir{padding:.95rem 1.15rem}
             .ic{margin-top:1rem}
-            .inclus{margin-top:1rem;padding:1rem 1.25rem}
-            .inclus-l li{font-size:.8rem}
+            .inclus{margin-top:1rem;padding:1.1rem 1.25rem}
+            .inclus-l li{font-size:.82rem}
             .recap{margin-top:1rem;gap:.5rem}
             .recap-item{padding:1rem 1.25rem}
             .recap-total{padding:1rem 1.25rem}
@@ -286,8 +275,8 @@
             .tr-unit{display:none}
             .tr-badge{position:static;transform:none;margin-left:auto}
             .tr-card.active{flex-wrap:wrap}
-            .calcul{padding:.85rem 1.15rem;margin-top:1rem}
-            .note{margin-top:1rem;padding:.75rem 1.1rem;font-size:.75rem}
+            .calcul{padding:.9rem 1.15rem;margin-top:1rem}
+            .strat-card{padding:1.1rem 1.25rem}
         }
 
         @media(max-width:440px){
@@ -308,7 +297,7 @@
 </head>
 <body>
 
-    <div class="progress" id="progress" style="width:14.3%"></div>
+    <div class="progress" id="progress" style="width:16.7%"></div>
     <div class="brand">BOTE.</div>
 
     <div class="deck">
@@ -319,200 +308,144 @@
                 <h1 class="title-main rv">HUMBLE+ <span>x</span> BOTE</h1>
                 <div class="accent-bar"></div>
                 <div class="title-sub rv d2">Devis Collagen Days 2026</div>
-                <div class="title-period rv d3">Fin avril &#8212; Debut mai</div>
+                <div class="title-period rv d3">Fin avril / début mai</div>
             </div>
         </div>
 
-        <!-- 2. Contexte -->
+        <!-- 2. Stratégie -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="tag rv">Le temps fort</div>
-                <h2 class="heading rv d1">Les <strong>Collagen Days</strong></h2>
-                <p class="desc rv d2">Les Collagen Days sont votre pic editorial de l'annee. Un moment cle pour affirmer l'expertise collagene de Humble+, pousser une offre claire, et reactiver chaque segment de votre base : prevention, menopause, sportifs, bien-vieillir.</p>
-                <p class="desc rv d3">Le dispositif couvre <strong>trois semaines</strong> de deploiement email + on-site, sur les quatre segments d'audience cibles dans votre identite de marque.</p>
-                <div class="ic rv d4">
-                    <div class="ir">
-                        <span class="ir-l">Periode</span>
-                        <span class="ir-v">Fin avril &#8212; debut mai 2026</span>
+                <div class="tag rv">Stratégie</div>
+                <h2 class="heading rv d1">La <strong>stratégie</strong>, déjà livrée</h2>
+                <p class="desc rv d2">La stratégie complète du temps fort vous a été partagée en amont. Elle repose sur trois blocs.</p>
+                <div class="strat rv d3">
+                    <div class="strat-card">
+                        <div class="strat-n">01</div>
+                        <div class="strat-t">Plan éditorial</div>
+                        <div class="strat-d">Calendrier semaine par semaine, par segment et par canal.</div>
                     </div>
-                    <div class="ir">
-                        <span class="ir-l">Duree</span>
-                        <span class="ir-v">3 semaines</span>
+                    <div class="strat-card">
+                        <div class="strat-n">02</div>
+                        <div class="strat-t">Angles et segmentation</div>
+                        <div class="strat-d">Un angle par newsletter, aligné aux piliers produit et à la segmentation Klaviyo.</div>
                     </div>
-                    <div class="ir">
-                        <span class="ir-l">Cibles</span>
-                        <span class="ir-v">Prospects, clients, abonnes, lapsed</span>
-                    </div>
-                    <div class="ir">
-                        <span class="ir-l">Canaux</span>
-                        <span class="ir-v">Email + on-site</span>
+                    <div class="strat-card">
+                        <div class="strat-n">03</div>
+                        <div class="strat-t">Coordination équipe</div>
+                        <div class="strat-d">Briefs, planning et synchronisation entre stratégiste, copywriter, designers et intégrateurs.</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 3. Strategie amont -->
-        <div class="slide">
-            <div class="slide-inner">
-                <div class="tag rv">Deja livre</div>
-                <h2 class="heading rv d1">La <strong>strategie</strong>, en amont</h2>
-                <p class="desc rv d2">Avant la production, l'ensemble de la strategie a ete defini, documente, et partage avec votre equipe. Ce travail represente la majorite du temps investi sur le temps fort et conditionne la performance des 30 livrables qui suivent.</p>
-                <div class="bg-grid rv d3">
-                    <div class="bg-cell">
-                        <div class="bg-dot"></div>
-                        <div>
-                            <div class="bg-t">Plan editorial detaille</div>
-                            <div class="bg-d">Calendrier semaine par semaine, par canal, par segment</div>
-                        </div>
-                    </div>
-                    <div class="bg-cell">
-                        <div class="bg-dot"></div>
-                        <div>
-                            <div class="bg-t">Angles &amp; briefs creatifs</div>
-                            <div class="bg-d">Un angle par newsletter, aligne avec les piliers produit</div>
-                        </div>
-                    </div>
-                    <div class="bg-cell">
-                        <div class="bg-dot"></div>
-                        <div>
-                            <div class="bg-t">Segmentation Klaviyo</div>
-                            <div class="bg-d">Prospects, acheteurs, abonnes, lapsed &#8212; architecture complete</div>
-                        </div>
-                    </div>
-                    <div class="bg-cell">
-                        <div class="bg-dot"></div>
-                        <div>
-                            <div class="bg-t">Mecanique promotionnelle</div>
-                            <div class="bg-d">Offre, pricing, positionnement vs temps fort precedents</div>
-                        </div>
-                    </div>
-                    <div class="bg-cell">
-                        <div class="bg-dot"></div>
-                        <div>
-                            <div class="bg-t">Synchronisation flows</div>
-                            <div class="bg-d">Coordination avec welcome, winback, abandon, post-achat</div>
-                        </div>
-                    </div>
-                    <div class="bg-cell">
-                        <div class="bg-dot"></div>
-                        <div>
-                            <div class="bg-t">Coordination equipe</div>
-                            <div class="bg-d">Strategiste, copywriter, designers, integrateurs Klaviyo</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="note rv d4"><strong>Entierement inclus</strong> dans le partenariat. Cette phase n'est pas refacturee dans le present devis.</div>
-            </div>
-        </div>
-
-        <!-- 4. Dispositif -->
+        <!-- 3. Production -->
         <div class="slide">
             <div class="slide-inner">
                 <div class="tag rv">Production</div>
-                <h2 class="heading rv d1">Le <strong>dispositif</strong> de production</h2>
-                <p class="desc rv d2">30 livrables deployes sur trois semaines. L'ensemble est orchestre pour couvrir chaque moment cle du parcours client pendant le temps fort, et chaque segment d'audience avec le bon angle.</p>
+                <h2 class="heading rv d1">Le <strong>dispositif</strong></h2>
+                <p class="desc rv d2">30 livrables répartis sur trois semaines, déployés sur email et on-site.</p>
                 <div class="hero-n rv d3">30</div>
                 <div class="hero-l rv d3">livrables</div>
                 <div class="ic rv d4">
                     <div class="ir">
-                        <div class="ir-l"><strong>Newsletters Collagen Days</strong><div class="ir-sub">Campagnes dediees, angles par segment</div></div>
+                        <div class="ir-l">Newsletters Collagen Days<div class="ir-sub">Campagnes dédiées, angles par segment</div></div>
                     </div>
                     <div class="ir">
-                        <div class="ir-l"><strong>Flows actualises</strong><div class="ir-sub">Adaptation welcome, winback, abandon, post-achat</div></div>
+                        <div class="ir-l">Flows actualisés<div class="ir-sub">Welcome, winback, abandon, post-achat</div></div>
                     </div>
                     <div class="ir">
-                        <div class="ir-l"><strong>Popups on-site</strong><div class="ir-sub">Conversion pendant le pic de trafic</div></div>
+                        <div class="ir-l">Popups on-site<div class="ir-sub">Conversion pendant le pic de trafic</div></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 5. Tarification principe -->
+        <!-- 4. Facturation -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="tag rv">Tarification</div>
-                <h2 class="heading rv d1">Principe de <strong>facturation</strong></h2>
-                <p class="desc rv d2">Le contrat mensuel Humble+ inclut un volume fixe d'unites. Sur les 30 livrables de ce temps fort, nous en <strong>absorbons 20</strong> : 15 via le contrat, 5 en geste commercial. Seules <strong>10 unites sont facturees</strong>.</p>
+                <div class="tag rv">Facturation</div>
+                <h2 class="heading rv d1">Principe</h2>
+                <p class="desc rv d2">Sur les 30 livrables, nous en absorbons 20. Seules 10 unités sont facturées.</p>
                 <div class="ic rv d3">
                     <div class="ir">
-                        <span class="ir-l">Production totale</span>
+                        <div class="ir-l">Production totale</div>
                         <span class="ir-v">30 livrables</span>
                     </div>
                     <div class="ir">
-                        <div class="ir-l"><strong>Absorbe dans le contrat mensuel</strong><div class="ir-sub">Production courante du mois maintenue en parallele</div></div>
-                        <span class="ir-v">15 unites</span>
+                        <div class="ir-l">Inclus dans le contrat mensuel</div>
+                        <span class="ir-v">15 unités</span>
                     </div>
                     <div class="ir gesture">
-                        <div class="ir-l"><strong>Geste commercial BOTE</strong><div class="ir-sub">Compensation de l'incident operationnel du mois precedent</div></div>
-                        <span class="ir-v">5 unites</span>
+                        <div class="ir-l">Geste commercial BOTE<div class="ir-sub">Compensation de l'incident opérationnel du mois dernier</div></div>
+                        <span class="ir-v">5 unités</span>
                     </div>
                     <div class="ir hl">
-                        <span class="ir-l">Volume facture</span>
-                        <span class="ir-v">10 unites</span>
+                        <div class="ir-l">Volume facturé</div>
+                        <span class="ir-v">10 unités</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 6. Grille degressive -->
+        <!-- 5. Grille -->
         <div class="slide">
             <div class="slide-inner">
                 <div class="tag rv">Grille BOTE</div>
-                <h2 class="heading rv d1">Grille <strong>degressive</strong></h2>
-                <p class="desc rv d2">La tarification des unites supplementaires suit une grille degressive : plus le volume facture est eleve, plus le prix unitaire baisse. Pour les Collagen Days, le volume facture (10 unites) se situe dans la tranche 1.</p>
+                <h2 class="heading rv d1">Grille <strong>dégressive</strong></h2>
+                <p class="desc rv d2">Plus le volume facturé est élevé, plus le prix unitaire baisse. Pour ce temps fort, le volume (10 unités) se situe dans la tranche 1.</p>
                 <div class="tranches rv d3">
                     <div class="tr-card active">
                         <div class="tr-badge">Applicable</div>
                         <div class="tr-t">Tranche 1</div>
-                        <div class="tr-range">0 &#8212; 10 unites</div>
-                        <div class="tr-price">200 &#8364;</div>
-                        <div class="tr-unit">par unite</div>
+                        <div class="tr-range">0 à 10 unités</div>
+                        <div class="tr-price">200 €</div>
+                        <div class="tr-unit">par unité</div>
                     </div>
                     <div class="tr-card">
                         <div class="tr-t">Tranche 2</div>
-                        <div class="tr-range">10 &#8212; 20 unites</div>
-                        <div class="tr-price">150 &#8364;</div>
-                        <div class="tr-unit">par unite</div>
+                        <div class="tr-range">10 à 20 unités</div>
+                        <div class="tr-price">150 €</div>
+                        <div class="tr-unit">par unité</div>
                     </div>
                     <div class="tr-card">
                         <div class="tr-t">Tranche 3</div>
-                        <div class="tr-range">20 unites et plus</div>
-                        <div class="tr-price">125 &#8364;</div>
-                        <div class="tr-unit">par unite</div>
+                        <div class="tr-range">20 unités et plus</div>
+                        <div class="tr-price">125 €</div>
+                        <div class="tr-unit">par unité</div>
                     </div>
                 </div>
                 <div class="calcul rv d4">
-                    <span class="calcul-l"><strong>10 unites</strong> &times; 200 &#8364; (tranche 1)</span>
-                    <span class="calcul-v">2 000,00 &#8364; HT</span>
+                    <span class="calcul-l"><strong>10 unités</strong> × 200 € (tranche 1)</span>
+                    <span class="calcul-v">2 000,00 € HT</span>
                 </div>
             </div>
         </div>
 
-        <!-- 7. Recap + inclus -->
+        <!-- 6. Total -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="tag rv">Recapitulatif</div>
+                <div class="tag rv">Récapitulatif</div>
                 <h2 class="heading rv d1">Total <strong>projet</strong></h2>
                 <div class="inclus rv d2">
                     <div class="inclus-t">Ce que couvre le forfait</div>
                     <ul class="inclus-l">
-                        <li><strong>Strategie complete du temps fort</strong> &#8212; plan editorial, angles, segmentation, coordination equipe <em style="color:var(--text-mute);font-style:normal">(deja livree, non refacturee)</em></li>
-                        <li><strong>Production des 30 livrables</strong> &#8212; newsletters, flows actualises, popups</li>
-                        <li><strong>Suivi pendant la periode</strong> &#8212; monitoring des performances, ajustements en cours de route</li>
-                        <li><strong>Reporting post-temps fort</strong> &#8212; analyse detaillee, learnings, recommandations pour la suite</li>
+                        <li>Stratégie complète du temps fort</li>
+                        <li>Production des 30 livrables</li>
+                        <li>Suivi pendant la période</li>
+                        <li>Reporting post-temps fort</li>
                     </ul>
                 </div>
                 <div class="recap rv d3">
                     <div class="recap-item">
                         <div class="recap-left">
                             <div class="recap-label">Production Collagen Days</div>
-                            <div class="recap-sub">10 unites facturees &middot; tranche 1 &middot; 200 &#8364; / unite</div>
+                            <div class="recap-sub">10 unités facturées · tranche 1 · 200 € / unité</div>
                         </div>
-                        <div class="recap-amt">2 000,00 &#8364;</div>
+                        <div class="recap-amt">2 000,00 €</div>
                     </div>
                     <div class="recap-total">
                         <span class="recap-total-label">Total HT</span>
-                        <span class="recap-total-amt">2 000,00 &#8364;</span>
+                        <span class="recap-total-amt">2 000,00 €</span>
                     </div>
                 </div>
             </div>
@@ -521,11 +454,11 @@
     </div>
 
     <div class="nav">
-        <button class="nav-btn" onclick="go(-1)" aria-label="Precedent">&#8592;</button>
+        <button class="nav-btn" onclick="go(-1)" aria-label="Précédent">←</button>
         <div class="dots" id="dots"></div>
-        <button class="nav-btn" onclick="go(1)" aria-label="Suivant">&#8594;</button>
+        <button class="nav-btn" onclick="go(1)" aria-label="Suivant">→</button>
     </div>
-    <div class="counter"><span class="c" id="cur">01</span> / <span id="tot">07</span></div>
+    <div class="counter"><span class="c" id="cur">01</span> / <span id="tot">06</span></div>
 
     <script>
         const slides=document.querySelectorAll('.slide'),N=slides.length;
