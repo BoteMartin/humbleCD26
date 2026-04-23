@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMBLE+ x BOTE — Collagen Days 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0B0F;
+            --surface: #141418;
+            --border: #222228;
+            --text: #EAEAEE;
+            --text-sec: #8A8A92;
+            --text-mute: #55555E;
+            --gold: #C8A96E;
+            --gold-dim: rgba(200,169,110,0.12);
+            --gold-border: rgba(200,169,110,0.25);
+            --r: 10px;
+            --ease: cubic-bezier(0.16,1,0.3,1);
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box}
+        ::selection{background:rgba(200,169,110,0.3);color:var(--text)}
+        html,body{height:100%;overflow:hidden}
+
+        body{
+            font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+            background:var(--bg);
+            background-image:radial-gradient(ellipse at 50% 0%,rgba(200,169,110,0.04) 0%,transparent 50%);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        body::after{
+            content:'';position:fixed;inset:0;opacity:0.018;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events:none;z-index:50;
+        }
+
+        .progress{
+            position:fixed;top:0;left:0;height:2px;
+            background:var(--gold);
+            box-shadow:0 0 12px rgba(200,169,110,0.3);
+            transition:width 0.5s var(--ease);z-index:200;
+        }
+
+        .brand{
+            position:fixed;top:2rem;right:3rem;
+            font-size:0.65rem;font-weight:600;letter-spacing:0.2em;
+            color:var(--text-mute);z-index:100;
+        }
+
+        .deck{position:relative;width:100vw;height:100vh}
+
+        .slide{
+            position:absolute;inset:0;
+            display:flex;align-items:center;justify-content:center;
+            padding:5rem 4rem 6rem;
+            opacity:0;pointer-events:none;transition:opacity 0.5s ease;
+        }
+        .slide.active{opacity:1;pointer-events:auto}
+        .slide-inner{width:100%;max-width:900px}
+
+        .rv{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s var(--ease)}
+        .slide.active .rv{opacity:1;transform:translateY(0)}
+        .slide.active .rv.d1{transition-delay:.08s}
+        .slide.active .rv.d2{transition-delay:.16s}
+        .slide.active .rv.d3{transition-delay:.24s}
+        .slide.active .rv.d4{transition-delay:.32s}
+
+        @media(prefers-reduced-motion:reduce){
+            .rv{transition:none!important;opacity:1!important;transform:none!important}
+            .slide,.progress{transition:none!important}
+        }
+
+        .tc{text-align:center}
+        .title-main{
+            font-size:clamp(2.4rem,7vw,4.5rem);
+            font-weight:200;letter-spacing:-0.04em;line-height:1.05;
+        }
+        .title-main span{font-weight:500}
+        .accent-bar{
+            width:0;height:2px;background:var(--gold);margin:2rem auto;
+            transition:width 0.9s var(--ease) 0.25s;
+        }
+        .slide.active .accent-bar{width:60px}
+        .title-sub{
+            font-size:clamp(0.75rem,1.5vw,0.95rem);
+            font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mute);
+        }
+
+        .tag{font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+        .heading{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem}
+        .heading strong{font-weight:600}
+        .desc{font-size:0.95rem;line-height:1.7;color:var(--text-sec);max-width:600px}
+        .desc strong{color:var(--text);font-weight:600}
+
+        .mc-single{
+            background:var(--surface);border:1px solid var(--border);
+            border-radius:var(--r);padding:2.5rem 2rem;
+            display:flex;align-items:center;gap:2rem;
+            margin-top:2rem;max-width:460px;
+            transition:border-color .3s;
+        }
+        .mc-single:hover{border-color:var(--gold-border)}
+        .mc-single .mc-n{font-size:3rem;font-weight:700;color:var(--gold);line-height:1}
+        .mc-single .mc-info{flex:1}
+        .mc-single .mc-l{font-size:0.85rem;font-weight:600;color:var(--text)}
+        .mc-single .mc-d{font-size:0.75rem;color:var(--text-mute);margin-top:.3rem;line-height:1.5}
+
+        .ic{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:1.5rem}
+        .ir{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--border)}
+        .ir:last-child{border-bottom:none}
+        .ir-l{font-size:0.8rem;font-weight:500;color:var(--text-sec)}
+        .ir-v{font-size:0.9rem;font-weight:600}
+        .ir.hl{background:var(--gold-dim)}
+        .ir.hl .ir-l,.ir.hl .ir-v{color:var(--gold);font-weight:700}
+
+        .tbl{
+            width:100%;border-collapse:separate;border-spacing:0;
+            background:var(--surface);border:1px solid var(--border);
+            border-radius:var(--r);overflow:hidden;margin-top:1.5rem;
+        }
+        .tbl th{
+            padding:.85rem 1.5rem;text-align:left;
+            font-size:0.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+            color:var(--text-mute);background:rgba(255,255,255,0.015);border-bottom:1px solid var(--border);
+        }
+        .tbl th.r{text-align:right}
+        .tbl td{padding:.85rem 1.5rem;font-size:0.88rem;border-bottom:1px solid var(--border);color:var(--text-sec)}
+        .tbl td.r{text-align:right}
+        .tbl td.b{font-weight:600;color:var(--text)}
+        .tbl tr:last-child td{border-bottom:none}
+        .tbl tr:hover td{background:rgba(255,255,255,0.015)}
+        .tbl .rt{background:rgba(255,255,255,0.025)}
+        .tbl .rt td{font-weight:600;color:var(--text)}
+
+        .inclus{
+            margin-top:1.5rem;
+            background:var(--surface);border:1px solid var(--border);
+            border-radius:var(--r);padding:1.25rem 1.5rem;
+        }
+        .inclus-t{
+            font-size:0.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+            color:var(--gold);margin-bottom:.85rem;
+        }
+        .inclus-l{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+        .inclus-l li{
+            font-size:0.85rem;color:var(--text-sec);padding-left:1.2rem;position:relative;
+        }
+        .inclus-l li::before{
+            content:'';position:absolute;left:0;top:.55rem;
+            width:5px;height:5px;border-radius:50%;background:var(--gold);
+        }
+        .inclus-l li strong{color:var(--text);font-weight:600}
+
+        .recap{margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+        .recap-item{
+            background:var(--surface);border:1px solid var(--border);
+            border-radius:var(--r);padding:1.25rem 1.5rem;
+            display:flex;justify-content:space-between;align-items:center;
+        }
+        .recap-left{flex:1}
+        .recap-label{font-size:0.9rem;font-weight:600;color:var(--text)}
+        .recap-sub{font-size:0.72rem;color:var(--text-mute);margin-top:.15rem}
+        .recap-amt{font-size:1.1rem;font-weight:700;color:var(--text);white-space:nowrap;margin-left:1rem}
+
+        .recap-total{
+            background:var(--gold-dim);border:1px solid var(--gold-border);
+            border-radius:var(--r);padding:1.25rem 1.5rem;
+            display:flex;justify-content:space-between;align-items:center;
+        }
+        .recap-total-label{
+            font-size:0.7rem;font-weight:700;letter-spacing:0.15em;
+            text-transform:uppercase;color:var(--gold);
+        }
+        .recap-total-amt{font-size:1.5rem;font-weight:700;color:var(--gold)}
+
+        .nav{
+            position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+            display:flex;align-items:center;gap:.75rem;z-index:100;
+        }
+        .nav-btn{
+            width:2.25rem;height:2.25rem;border:1px solid var(--border);
+            border-radius:50%;background:var(--surface);color:var(--text-mute);
+            cursor:pointer;display:flex;align-items:center;justify-content:center;
+            font-size:0.85rem;transition:all .25s ease;-webkit-tap-highlight-color:transparent;
+        }
+        .nav-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+        .nav-btn:active{transform:scale(0.92)}
+
+        .dots{display:flex;gap:.4rem}
+        .dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .3s ease}
+        .dot.on{background:var(--gold);transform:scale(1.35);box-shadow:0 0 8px rgba(200,169,110,0.35)}
+
+        .counter{
+            position:fixed;bottom:2.25rem;right:3rem;
+            font-size:0.7rem;font-weight:500;letter-spacing:.08em;color:var(--text-mute);z-index:100;
+        }
+        .counter .c{color:var(--text-sec);font-weight:600}
+
+        @media(max-width:900px){.slide{padding:4rem 3rem 5.5rem}.brand{top:1.5rem;right:2rem}}
+
+        @media(max-width:680px){
+            .slide{padding:2.5rem 1.5rem 4rem;align-items:flex-start;overflow-y:auto}
+            .brand{top:1.25rem;right:1.5rem;font-size:.6rem}
+            .heading{font-size:1.5rem;margin-bottom:.75rem}
+            .tag{margin-bottom:.5rem}
+            .desc{font-size:.85rem}
+            .mc-single{padding:1.5rem;gap:1.25rem;margin-top:1.25rem}
+            .mc-single .mc-n{font-size:2.5rem}
+            .nav{bottom:1rem}
+            .counter{bottom:1.25rem;right:1.5rem}
+            .tbl{margin-top:1rem}
+            .tbl th,.tbl td{padding:.65rem .9rem;font-size:.78rem}
+            .ir{padding:.85rem 1.1rem}
+            .ic{margin-top:1rem}
+            .inclus{margin-top:1rem;padding:1rem 1.25rem}
+            .inclus-l li{font-size:.8rem}
+            .recap{margin-top:1rem;gap:.5rem}
+            .recap-item{padding:1rem 1.25rem}
+            .recap-total{padding:1rem 1.25rem}
+            .recap-total-amt{font-size:1.3rem}
+        }
+
+        @media(max-width:440px){
+            .slide{padding:2rem 1.25rem 3.5rem}
+            .heading{font-size:1.3rem;margin-bottom:.5rem}
+            .title-main{font-size:2.2rem}
+            .brand,.counter{display:none}
+            .ir{flex-direction:column;align-items:flex-start;gap:.15rem;padding:.7rem 1rem}
+            .tbl th,.tbl td{padding:.5rem .65rem;font-size:.7rem}
+            .recap-item{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.9rem 1rem}
+            .recap-amt{margin-left:0;font-size:1rem}
+            .recap-total{flex-direction:column;align-items:flex-start;gap:.25rem;padding:.9rem 1rem}
+            .recap-total-amt{font-size:1.2rem}
+            .mc-single{flex-direction:column;text-align:center;gap:.75rem;padding:1.25rem}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress" id="progress" style="width:20%"></div>
+    <div class="brand">BOTE.</div>
+
+    <div class="deck">
+
+        <!-- 1. Title -->
+        <div class="slide active">
+            <div class="slide-inner tc">
+                <h1 class="title-main rv">HUMBLE+ <span>x</span> BOTE</h1>
+                <div class="accent-bar"></div>
+                <div class="title-sub rv d2">Devis Collagen Days 2026</div>
+            </div>
+        </div>
+
+        <!-- 2. Production -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="tag rv">Production</div>
+                <h2 class="heading rv d1"><strong>30</strong> livrables</h2>
+                <p class="desc rv d2">Production Collagen Days 2026. Newsletters, flows et popups, de fin avril a debut mai. L'ensemble du dispositif est cale sur le pic editorial de la marque.</p>
+                <div class="mc-single rv d3">
+                    <div class="mc-n">30</div>
+                    <div class="mc-info">
+                        <div class="mc-l">Newsletters + Flows + Popups</div>
+                        <div class="mc-d">Campagnes Collagen Days, optimisations flows, supports de conversion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Tarification -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="tag rv">Tarification</div>
+                <h2 class="heading rv d1">Principe de <strong>tarification</strong></h2>
+                <p class="desc rv d2">Sur les 30 livrables prevus pour les Collagen Days, <strong>15 unites sont absorbees par le contrat mensuel</strong> (la production courante du mois continue en parallele). <strong>5 unites supplementaires sont absorbees</strong> a titre exceptionnel, en compensation d'une erreur operationnelle sur le mois precedent. Les 10 unites restantes constituent le volume facture, selon la grille degressive BOTE.</p>
+                <div class="ic rv d3">
+                    <div class="ir">
+                        <span class="ir-l">Production totale</span>
+                        <span class="ir-v">30 livrables</span>
+                    </div>
+                    <div class="ir">
+                        <span class="ir-l">Inclus dans le contrat mensuel</span>
+                        <span class="ir-v">15 unites</span>
+                    </div>
+                    <div class="ir">
+                        <span class="ir-l">Geste commercial BOTE</span>
+                        <span class="ir-v">5 unites</span>
+                    </div>
+                    <div class="ir hl">
+                        <span class="ir-l">Volume facture</span>
+                        <span class="ir-v">10 unites</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Grille -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="tag rv">Tarification</div>
+                <h2 class="heading rv d1">Grille <strong>degressive</strong></h2>
+                <p class="desc rv d2">Grille appliquee sur le volume supplementaire. Tranche 1 : 0-10 unites a 200 &#8364;. Tranche 2 : 10-20 unites a 150 &#8364;. Tranche 3 : 20+ unites a 125 &#8364;.</p>
+                <table class="tbl rv d3">
+                    <thead>
+                        <tr>
+                            <th>Tranche</th>
+                            <th>Unites</th>
+                            <th class="r">Prix unit.</th>
+                            <th class="r">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tranche 1</td>
+                            <td>10</td>
+                            <td class="r">200 &#8364;</td>
+                            <td class="r b">2 000 &#8364;</td>
+                        </tr>
+                        <tr class="rt">
+                            <td colspan="3">Total production</td>
+                            <td class="r b">2 000 &#8364;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. Recap -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="tag rv">Recapitulatif</div>
+                <h2 class="heading rv d1">Total <strong>projet</strong></h2>
+                <div class="inclus rv d2">
+                    <div class="inclus-t">Inclus dans le forfait</div>
+                    <ul class="inclus-l">
+                        <li><strong>Strategie complete du temps fort</strong> : plan editorial, angles, sequencement, segmentation</li>
+                        <li><strong>Suivi pendant la periode</strong> : monitoring des performances, ajustements en cours de route</li>
+                        <li><strong>Reporting post-temps fort</strong> : analyse detaillee, learnings et recommandations pour la suite</li>
+                    </ul>
+                </div>
+                <div class="recap rv d3">
+                    <div class="recap-item">
+                        <div class="recap-left">
+                            <div class="recap-label">Production Collagen Days</div>
+                            <div class="recap-sub">10 unites facturees (tranche 1)</div>
+                        </div>
+                        <div class="recap-amt">2 000,00 &#8364;</div>
+                    </div>
+                    <div class="recap-total">
+                        <span class="recap-total-label">Total HT</span>
+                        <span class="recap-total-amt">2 000,00 &#8364;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="nav">
+        <button class="nav-btn" onclick="go(-1)" aria-label="Precedent">&#8592;</button>
+        <div class="dots" id="dots"></div>
+        <button class="nav-btn" onclick="go(1)" aria-label="Suivant">&#8594;</button>
+    </div>
+    <div class="counter"><span class="c" id="cur">01</span> / <span id="tot">05</span></div>
+
+    <script>
+        const slides=document.querySelectorAll('.slide'),N=slides.length;
+        let i=0;
+
+        const dotsEl=document.getElementById('dots');
+        for(let d=0;d<N;d++){
+            const dot=document.createElement('div');
+            dot.className='dot'+(d===0?' on':'');
+            dot.onclick=()=>jump(d);
+            dotsEl.appendChild(dot);
+        }
+
+        function update(){
+            slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+            document.querySelectorAll('.dot').forEach((d,idx)=>d.classList.toggle('on',idx===i));
+            document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+            document.getElementById('tot').textContent=String(N).padStart(2,'0');
+            document.getElementById('progress').style.width=((i+1)/N*100)+'%';
+        }
+
+        function go(dir){i=(i+dir+N)%N;update()}
+        function jump(idx){i=idx;update()}
+
+        document.addEventListener('keydown',e=>{
+            if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(1)}
+            else if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}
+            else if(e.key==='Escape'){jump(0)}
+            else if(+e.key>=1&&+e.key<=N){jump(+e.key-1)}
+        });
+
+        let tx=0;
+        document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX},{passive:true});
+        document.addEventListener('touchend',e=>{
+            const dx=e.changedTouches[0].screenX-tx;
+            if(dx<-50)go(1);else if(dx>50)go(-1);
+        });
+    </script>
+</body>
+</html>
