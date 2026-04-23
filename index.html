@@ -11,11 +11,13 @@
         :root {
             --bg: #0B0B0F;
             --surface: #141418;
+            --surface-2: #1A1A20;
             --border: #222228;
             --text: #EAEAEE;
             --text-sec: #8A8A92;
             --text-mute: #55555E;
             --gold: #C8A96E;
+            --gold-soft: #D4B77E;
             --gold-dim: rgba(200,169,110,0.12);
             --gold-border: rgba(200,169,110,0.25);
             --r: 10px;
@@ -63,7 +65,7 @@
             opacity:0;pointer-events:none;transition:opacity 0.5s ease;
         }
         .slide.active{opacity:1;pointer-events:auto}
-        .slide-inner{width:100%;max-width:900px}
+        .slide-inner{width:100%;max-width:920px}
 
         .rv{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s var(--ease)}
         .slide.active .rv{opacity:1;transform:translateY(0)}
@@ -71,6 +73,7 @@
         .slide.active .rv.d2{transition-delay:.16s}
         .slide.active .rv.d3{transition-delay:.24s}
         .slide.active .rv.d4{transition-delay:.32s}
+        .slide.active .rv.d5{transition-delay:.40s}
 
         @media(prefers-reduced-motion:reduce){
             .rv{transition:none!important;opacity:1!important;transform:none!important}
@@ -92,82 +95,130 @@
             font-size:clamp(0.75rem,1.5vw,0.95rem);
             font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mute);
         }
+        .title-period{
+            margin-top:1.5rem;font-size:0.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-sec);
+        }
 
         .tag{font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
-        .heading{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem}
+        .heading{font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:300;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem}
         .heading strong{font-weight:600}
-        .desc{font-size:0.95rem;line-height:1.7;color:var(--text-sec);max-width:600px}
+        .desc{font-size:0.92rem;line-height:1.7;color:var(--text-sec);max-width:640px}
         .desc strong{color:var(--text);font-weight:600}
+        .desc + .desc{margin-top:.75rem}
 
-        .mc-single{
-            background:var(--surface);border:1px solid var(--border);
-            border-radius:var(--r);padding:2.5rem 2rem;
-            display:flex;align-items:center;gap:2rem;
-            margin-top:2rem;max-width:460px;
-            transition:border-color .3s;
+        /* Deliverable hero */
+        .hero-n{
+            font-size:clamp(4.5rem,10vw,6.5rem);font-weight:700;
+            color:var(--gold);line-height:1;margin:1.5rem 0 .25rem;
+            letter-spacing:-0.04em;
         }
-        .mc-single:hover{border-color:var(--gold-border)}
-        .mc-single .mc-n{font-size:3rem;font-weight:700;color:var(--gold);line-height:1}
-        .mc-single .mc-info{flex:1}
-        .mc-single .mc-l{font-size:0.85rem;font-weight:600;color:var(--text)}
-        .mc-single .mc-d{font-size:0.75rem;color:var(--text-mute);margin-top:.3rem;line-height:1.5}
+        .hero-l{
+            font-size:0.8rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-sec);
+        }
 
+        /* Info card rows */
         .ic{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:1.5rem}
-        .ir{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--border)}
+        .ir{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--border);gap:1rem}
         .ir:last-child{border-bottom:none}
-        .ir-l{font-size:0.8rem;font-weight:500;color:var(--text-sec)}
-        .ir-v{font-size:0.9rem;font-weight:600}
+        .ir-l{font-size:0.82rem;font-weight:500;color:var(--text-sec);flex:1}
+        .ir-sub{font-size:0.72rem;color:var(--text-mute);margin-top:.2rem}
+        .ir-v{font-size:0.9rem;font-weight:600;white-space:nowrap}
         .ir.hl{background:var(--gold-dim)}
         .ir.hl .ir-l,.ir.hl .ir-v{color:var(--gold);font-weight:700}
+        .ir.gesture{background:rgba(200,169,110,0.05)}
+        .ir.gesture .ir-v{color:var(--gold-soft)}
+        .ir-l strong{color:var(--text);font-weight:600}
 
-        .tbl{
-            width:100%;border-collapse:separate;border-spacing:0;
-            background:var(--surface);border:1px solid var(--border);
-            border-radius:var(--r);overflow:hidden;margin-top:1.5rem;
+        /* Bullet grid (strategy amont) */
+        .bg-grid{
+            margin-top:1.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;
         }
-        .tbl th{
-            padding:.85rem 1.5rem;text-align:left;
-            font-size:0.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-            color:var(--text-mute);background:rgba(255,255,255,0.015);border-bottom:1px solid var(--border);
+        .bg-cell{
+            background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+            padding:1rem 1.25rem;display:flex;gap:.85rem;align-items:flex-start;
+            transition:border-color .3s;
         }
-        .tbl th.r{text-align:right}
-        .tbl td{padding:.85rem 1.5rem;font-size:0.88rem;border-bottom:1px solid var(--border);color:var(--text-sec)}
-        .tbl td.r{text-align:right}
-        .tbl td.b{font-weight:600;color:var(--text)}
-        .tbl tr:last-child td{border-bottom:none}
-        .tbl tr:hover td{background:rgba(255,255,255,0.015)}
-        .tbl .rt{background:rgba(255,255,255,0.025)}
-        .tbl .rt td{font-weight:600;color:var(--text)}
+        .bg-cell:hover{border-color:var(--gold-border)}
+        .bg-dot{
+            width:6px;height:6px;border-radius:50%;background:var(--gold);
+            margin-top:.5rem;flex-shrink:0;box-shadow:0 0 8px rgba(200,169,110,0.5);
+        }
+        .bg-t{font-size:0.82rem;font-weight:600;color:var(--text);line-height:1.4}
+        .bg-d{font-size:0.72rem;color:var(--text-mute);margin-top:.15rem;line-height:1.45}
 
+        .note{
+            margin-top:1.25rem;padding:.85rem 1.25rem;
+            background:var(--gold-dim);border-left:2px solid var(--gold);border-radius:4px;
+            font-size:0.78rem;color:var(--gold-soft);line-height:1.6;
+        }
+        .note strong{color:var(--gold);font-weight:700}
+
+        /* Tranches */
+        .tranches{
+            margin-top:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;
+        }
+        .tr-card{
+            background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+            padding:1.5rem 1.25rem;text-align:center;
+            transition:all .3s;position:relative;
+        }
+        .tr-card.active{
+            background:var(--gold-dim);border-color:var(--gold-border);
+            box-shadow:0 0 0 1px var(--gold-border);
+        }
+        .tr-badge{
+            position:absolute;top:-.6rem;left:50%;transform:translateX(-50%);
+            background:var(--gold);color:#0B0B0F;
+            font-size:0.58rem;font-weight:700;letter-spacing:.15em;
+            text-transform:uppercase;padding:.25rem .6rem;border-radius:100px;
+        }
+        .tr-t{font-size:0.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mute);margin-bottom:.5rem}
+        .tr-card.active .tr-t{color:var(--gold)}
+        .tr-range{font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:1rem}
+        .tr-price{font-size:1.8rem;font-weight:700;color:var(--text)}
+        .tr-card.active .tr-price{color:var(--gold)}
+        .tr-unit{font-size:0.7rem;color:var(--text-mute);margin-top:.2rem}
+
+        .calcul{
+            margin-top:1.25rem;padding:1rem 1.5rem;
+            background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+            display:flex;justify-content:space-between;align-items:center;gap:1rem;
+        }
+        .calcul-l{font-size:0.78rem;color:var(--text-sec)}
+        .calcul-l strong{color:var(--text);font-weight:600}
+        .calcul-v{font-size:1.1rem;font-weight:700;color:var(--gold);white-space:nowrap}
+
+        /* Inclus card */
         .inclus{
             margin-top:1.5rem;
             background:var(--surface);border:1px solid var(--border);
             border-radius:var(--r);padding:1.25rem 1.5rem;
         }
         .inclus-t{
-            font-size:0.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+            font-size:0.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
             color:var(--gold);margin-bottom:.85rem;
         }
-        .inclus-l{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+        .inclus-l{list-style:none;display:flex;flex-direction:column;gap:.6rem}
         .inclus-l li{
-            font-size:0.85rem;color:var(--text-sec);padding-left:1.2rem;position:relative;
+            font-size:0.85rem;color:var(--text-sec);padding-left:1.25rem;position:relative;line-height:1.5;
         }
         .inclus-l li::before{
-            content:'';position:absolute;left:0;top:.55rem;
+            content:'';position:absolute;left:0;top:.6rem;
             width:5px;height:5px;border-radius:50%;background:var(--gold);
         }
         .inclus-l li strong{color:var(--text);font-weight:600}
 
-        .recap{margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+        /* Recap */
+        .recap{margin-top:1.25rem;display:flex;flex-direction:column;gap:.65rem}
         .recap-item{
             background:var(--surface);border:1px solid var(--border);
-            border-radius:var(--r);padding:1.25rem 1.5rem;
-            display:flex;justify-content:space-between;align-items:center;
+            border-radius:var(--r);padding:1.1rem 1.5rem;
+            display:flex;justify-content:space-between;align-items:center;gap:1rem;
         }
         .recap-left{flex:1}
-        .recap-label{font-size:0.9rem;font-weight:600;color:var(--text)}
+        .recap-label{font-size:0.88rem;font-weight:600;color:var(--text)}
         .recap-sub{font-size:0.72rem;color:var(--text-mute);margin-top:.15rem}
-        .recap-amt{font-size:1.1rem;font-weight:700;color:var(--text);white-space:nowrap;margin-left:1rem}
+        .recap-amt{font-size:1.05rem;font-weight:700;color:var(--text);white-space:nowrap}
 
         .recap-total{
             background:var(--gold-dim);border:1px solid var(--gold-border);
@@ -175,11 +226,12 @@
             display:flex;justify-content:space-between;align-items:center;
         }
         .recap-total-label{
-            font-size:0.7rem;font-weight:700;letter-spacing:0.15em;
+            font-size:0.7rem;font-weight:700;letter-spacing:0.18em;
             text-transform:uppercase;color:var(--gold);
         }
         .recap-total-amt{font-size:1.5rem;font-weight:700;color:var(--gold)}
 
+        /* Nav */
         .nav{
             position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
             display:flex;align-items:center;gap:.75rem;z-index:100;
@@ -203,20 +255,21 @@
         }
         .counter .c{color:var(--text-sec);font-weight:600}
 
-        @media(max-width:900px){.slide{padding:4rem 3rem 5.5rem}.brand{top:1.5rem;right:2rem}}
+        @media(max-width:900px){
+            .slide{padding:4rem 3rem 5.5rem}
+            .brand{top:1.5rem;right:2rem}
+            .bg-grid{grid-template-columns:1fr}
+        }
 
         @media(max-width:680px){
             .slide{padding:2.5rem 1.5rem 4rem;align-items:flex-start;overflow-y:auto}
             .brand{top:1.25rem;right:1.5rem;font-size:.6rem}
             .heading{font-size:1.5rem;margin-bottom:.75rem}
             .tag{margin-bottom:.5rem}
-            .desc{font-size:.85rem}
-            .mc-single{padding:1.5rem;gap:1.25rem;margin-top:1.25rem}
-            .mc-single .mc-n{font-size:2.5rem}
+            .desc{font-size:.82rem}
+            .hero-n{font-size:4rem}
             .nav{bottom:1rem}
             .counter{bottom:1.25rem;right:1.5rem}
-            .tbl{margin-top:1rem}
-            .tbl th,.tbl td{padding:.65rem .9rem;font-size:.78rem}
             .ir{padding:.85rem 1.1rem}
             .ic{margin-top:1rem}
             .inclus{margin-top:1rem;padding:1rem 1.25rem}
@@ -225,26 +278,37 @@
             .recap-item{padding:1rem 1.25rem}
             .recap-total{padding:1rem 1.25rem}
             .recap-total-amt{font-size:1.3rem}
+            .tranches{grid-template-columns:1fr;gap:.6rem;margin-top:1rem}
+            .tr-card{padding:1.1rem 1rem;display:flex;justify-content:space-between;align-items:center;text-align:left}
+            .tr-t{margin-bottom:0}
+            .tr-range{margin-bottom:0;font-size:.78rem}
+            .tr-price{font-size:1.3rem}
+            .tr-unit{display:none}
+            .tr-badge{position:static;transform:none;margin-left:auto}
+            .tr-card.active{flex-wrap:wrap}
+            .calcul{padding:.85rem 1.15rem;margin-top:1rem}
+            .note{margin-top:1rem;padding:.75rem 1.1rem;font-size:.75rem}
         }
 
         @media(max-width:440px){
             .slide{padding:2rem 1.25rem 3.5rem}
-            .heading{font-size:1.3rem;margin-bottom:.5rem}
-            .title-main{font-size:2.2rem}
+            .heading{font-size:1.25rem;margin-bottom:.5rem}
+            .title-main{font-size:2rem}
             .brand,.counter{display:none}
-            .ir{flex-direction:column;align-items:flex-start;gap:.15rem;padding:.7rem 1rem}
-            .tbl th,.tbl td{padding:.5rem .65rem;font-size:.7rem}
+            .ir{flex-direction:column;align-items:flex-start;gap:.25rem;padding:.7rem 1rem}
+            .ir-v{align-self:flex-end}
             .recap-item{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.9rem 1rem}
-            .recap-amt{margin-left:0;font-size:1rem}
+            .recap-amt{font-size:1rem}
             .recap-total{flex-direction:column;align-items:flex-start;gap:.25rem;padding:.9rem 1rem}
             .recap-total-amt{font-size:1.2rem}
-            .mc-single{flex-direction:column;text-align:center;gap:.75rem;padding:1.25rem}
+            .calcul{flex-direction:column;align-items:flex-start;gap:.4rem}
+            .tr-card{padding:.9rem 1rem}
         }
     </style>
 </head>
 <body>
 
-    <div class="progress" id="progress" style="width:20%"></div>
+    <div class="progress" id="progress" style="width:14.3%"></div>
     <div class="brand">BOTE.</div>
 
     <div class="deck">
@@ -255,42 +319,131 @@
                 <h1 class="title-main rv">HUMBLE+ <span>x</span> BOTE</h1>
                 <div class="accent-bar"></div>
                 <div class="title-sub rv d2">Devis Collagen Days 2026</div>
+                <div class="title-period rv d3">Fin avril &#8212; Debut mai</div>
             </div>
         </div>
 
-        <!-- 2. Production -->
+        <!-- 2. Contexte -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="tag rv">Production</div>
-                <h2 class="heading rv d1"><strong>30</strong> livrables</h2>
-                <p class="desc rv d2">Production Collagen Days 2026. Newsletters, flows et popups, de fin avril a debut mai. L'ensemble du dispositif est cale sur le pic editorial de la marque.</p>
-                <div class="mc-single rv d3">
-                    <div class="mc-n">30</div>
-                    <div class="mc-info">
-                        <div class="mc-l">Newsletters + Flows + Popups</div>
-                        <div class="mc-d">Campagnes Collagen Days, optimisations flows, supports de conversion</div>
+                <div class="tag rv">Le temps fort</div>
+                <h2 class="heading rv d1">Les <strong>Collagen Days</strong></h2>
+                <p class="desc rv d2">Les Collagen Days sont votre pic editorial de l'annee. Un moment cle pour affirmer l'expertise collagene de Humble+, pousser une offre claire, et reactiver chaque segment de votre base : prevention, menopause, sportifs, bien-vieillir.</p>
+                <p class="desc rv d3">Le dispositif couvre <strong>trois semaines</strong> de deploiement email + on-site, sur les quatre segments d'audience cibles dans votre identite de marque.</p>
+                <div class="ic rv d4">
+                    <div class="ir">
+                        <span class="ir-l">Periode</span>
+                        <span class="ir-v">Fin avril &#8212; debut mai 2026</span>
+                    </div>
+                    <div class="ir">
+                        <span class="ir-l">Duree</span>
+                        <span class="ir-v">3 semaines</span>
+                    </div>
+                    <div class="ir">
+                        <span class="ir-l">Cibles</span>
+                        <span class="ir-v">Prospects, clients, abonnes, lapsed</span>
+                    </div>
+                    <div class="ir">
+                        <span class="ir-l">Canaux</span>
+                        <span class="ir-v">Email + on-site</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 3. Tarification -->
+        <!-- 3. Strategie amont -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="tag rv">Deja livre</div>
+                <h2 class="heading rv d1">La <strong>strategie</strong>, en amont</h2>
+                <p class="desc rv d2">Avant la production, l'ensemble de la strategie a ete defini, documente, et partage avec votre equipe. Ce travail represente la majorite du temps investi sur le temps fort et conditionne la performance des 30 livrables qui suivent.</p>
+                <div class="bg-grid rv d3">
+                    <div class="bg-cell">
+                        <div class="bg-dot"></div>
+                        <div>
+                            <div class="bg-t">Plan editorial detaille</div>
+                            <div class="bg-d">Calendrier semaine par semaine, par canal, par segment</div>
+                        </div>
+                    </div>
+                    <div class="bg-cell">
+                        <div class="bg-dot"></div>
+                        <div>
+                            <div class="bg-t">Angles &amp; briefs creatifs</div>
+                            <div class="bg-d">Un angle par newsletter, aligne avec les piliers produit</div>
+                        </div>
+                    </div>
+                    <div class="bg-cell">
+                        <div class="bg-dot"></div>
+                        <div>
+                            <div class="bg-t">Segmentation Klaviyo</div>
+                            <div class="bg-d">Prospects, acheteurs, abonnes, lapsed &#8212; architecture complete</div>
+                        </div>
+                    </div>
+                    <div class="bg-cell">
+                        <div class="bg-dot"></div>
+                        <div>
+                            <div class="bg-t">Mecanique promotionnelle</div>
+                            <div class="bg-d">Offre, pricing, positionnement vs temps fort precedents</div>
+                        </div>
+                    </div>
+                    <div class="bg-cell">
+                        <div class="bg-dot"></div>
+                        <div>
+                            <div class="bg-t">Synchronisation flows</div>
+                            <div class="bg-d">Coordination avec welcome, winback, abandon, post-achat</div>
+                        </div>
+                    </div>
+                    <div class="bg-cell">
+                        <div class="bg-dot"></div>
+                        <div>
+                            <div class="bg-t">Coordination equipe</div>
+                            <div class="bg-d">Strategiste, copywriter, designers, integrateurs Klaviyo</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="note rv d4"><strong>Entierement inclus</strong> dans le partenariat. Cette phase n'est pas refacturee dans le present devis.</div>
+            </div>
+        </div>
+
+        <!-- 4. Dispositif -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="tag rv">Production</div>
+                <h2 class="heading rv d1">Le <strong>dispositif</strong> de production</h2>
+                <p class="desc rv d2">30 livrables deployes sur trois semaines. L'ensemble est orchestre pour couvrir chaque moment cle du parcours client pendant le temps fort, et chaque segment d'audience avec le bon angle.</p>
+                <div class="hero-n rv d3">30</div>
+                <div class="hero-l rv d3">livrables</div>
+                <div class="ic rv d4">
+                    <div class="ir">
+                        <div class="ir-l"><strong>Newsletters Collagen Days</strong><div class="ir-sub">Campagnes dediees, angles par segment</div></div>
+                    </div>
+                    <div class="ir">
+                        <div class="ir-l"><strong>Flows actualises</strong><div class="ir-sub">Adaptation welcome, winback, abandon, post-achat</div></div>
+                    </div>
+                    <div class="ir">
+                        <div class="ir-l"><strong>Popups on-site</strong><div class="ir-sub">Conversion pendant le pic de trafic</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Tarification principe -->
         <div class="slide">
             <div class="slide-inner">
                 <div class="tag rv">Tarification</div>
-                <h2 class="heading rv d1">Principe de <strong>tarification</strong></h2>
-                <p class="desc rv d2">Sur les 30 livrables prevus pour les Collagen Days, <strong>15 unites sont absorbees par le contrat mensuel</strong> (la production courante du mois continue en parallele). <strong>5 unites supplementaires sont absorbees</strong> a titre exceptionnel, en compensation d'une erreur operationnelle sur le mois precedent. Les 10 unites restantes constituent le volume facture, selon la grille degressive BOTE.</p>
+                <h2 class="heading rv d1">Principe de <strong>facturation</strong></h2>
+                <p class="desc rv d2">Le contrat mensuel Humble+ inclut un volume fixe d'unites. Sur les 30 livrables de ce temps fort, nous en <strong>absorbons 20</strong> : 15 via le contrat, 5 en geste commercial. Seules <strong>10 unites sont facturees</strong>.</p>
                 <div class="ic rv d3">
                     <div class="ir">
                         <span class="ir-l">Production totale</span>
                         <span class="ir-v">30 livrables</span>
                     </div>
                     <div class="ir">
-                        <span class="ir-l">Inclus dans le contrat mensuel</span>
+                        <div class="ir-l"><strong>Absorbe dans le contrat mensuel</strong><div class="ir-sub">Production courante du mois maintenue en parallele</div></div>
                         <span class="ir-v">15 unites</span>
                     </div>
-                    <div class="ir">
-                        <span class="ir-l">Geste commercial BOTE</span>
+                    <div class="ir gesture">
+                        <div class="ir-l"><strong>Geste commercial BOTE</strong><div class="ir-sub">Compensation de l'incident operationnel du mois precedent</div></div>
                         <span class="ir-v">5 unites</span>
                     </div>
                     <div class="ir hl">
@@ -301,55 +454,59 @@
             </div>
         </div>
 
-        <!-- 4. Grille -->
+        <!-- 6. Grille degressive -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="tag rv">Tarification</div>
+                <div class="tag rv">Grille BOTE</div>
                 <h2 class="heading rv d1">Grille <strong>degressive</strong></h2>
-                <p class="desc rv d2">Grille appliquee sur le volume supplementaire. Tranche 1 : 0-10 unites a 200 &#8364;. Tranche 2 : 10-20 unites a 150 &#8364;. Tranche 3 : 20+ unites a 125 &#8364;.</p>
-                <table class="tbl rv d3">
-                    <thead>
-                        <tr>
-                            <th>Tranche</th>
-                            <th>Unites</th>
-                            <th class="r">Prix unit.</th>
-                            <th class="r">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tranche 1</td>
-                            <td>10</td>
-                            <td class="r">200 &#8364;</td>
-                            <td class="r b">2 000 &#8364;</td>
-                        </tr>
-                        <tr class="rt">
-                            <td colspan="3">Total production</td>
-                            <td class="r b">2 000 &#8364;</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="desc rv d2">La tarification des unites supplementaires suit une grille degressive : plus le volume facture est eleve, plus le prix unitaire baisse. Pour les Collagen Days, le volume facture (10 unites) se situe dans la tranche 1.</p>
+                <div class="tranches rv d3">
+                    <div class="tr-card active">
+                        <div class="tr-badge">Applicable</div>
+                        <div class="tr-t">Tranche 1</div>
+                        <div class="tr-range">0 &#8212; 10 unites</div>
+                        <div class="tr-price">200 &#8364;</div>
+                        <div class="tr-unit">par unite</div>
+                    </div>
+                    <div class="tr-card">
+                        <div class="tr-t">Tranche 2</div>
+                        <div class="tr-range">10 &#8212; 20 unites</div>
+                        <div class="tr-price">150 &#8364;</div>
+                        <div class="tr-unit">par unite</div>
+                    </div>
+                    <div class="tr-card">
+                        <div class="tr-t">Tranche 3</div>
+                        <div class="tr-range">20 unites et plus</div>
+                        <div class="tr-price">125 &#8364;</div>
+                        <div class="tr-unit">par unite</div>
+                    </div>
+                </div>
+                <div class="calcul rv d4">
+                    <span class="calcul-l"><strong>10 unites</strong> &times; 200 &#8364; (tranche 1)</span>
+                    <span class="calcul-v">2 000,00 &#8364; HT</span>
+                </div>
             </div>
         </div>
 
-        <!-- 5. Recap -->
+        <!-- 7. Recap + inclus -->
         <div class="slide">
             <div class="slide-inner">
                 <div class="tag rv">Recapitulatif</div>
                 <h2 class="heading rv d1">Total <strong>projet</strong></h2>
                 <div class="inclus rv d2">
-                    <div class="inclus-t">Inclus dans le forfait</div>
+                    <div class="inclus-t">Ce que couvre le forfait</div>
                     <ul class="inclus-l">
-                        <li><strong>Strategie complete du temps fort</strong> : plan editorial, angles, sequencement, segmentation</li>
-                        <li><strong>Suivi pendant la periode</strong> : monitoring des performances, ajustements en cours de route</li>
-                        <li><strong>Reporting post-temps fort</strong> : analyse detaillee, learnings et recommandations pour la suite</li>
+                        <li><strong>Strategie complete du temps fort</strong> &#8212; plan editorial, angles, segmentation, coordination equipe <em style="color:var(--text-mute);font-style:normal">(deja livree, non refacturee)</em></li>
+                        <li><strong>Production des 30 livrables</strong> &#8212; newsletters, flows actualises, popups</li>
+                        <li><strong>Suivi pendant la periode</strong> &#8212; monitoring des performances, ajustements en cours de route</li>
+                        <li><strong>Reporting post-temps fort</strong> &#8212; analyse detaillee, learnings, recommandations pour la suite</li>
                     </ul>
                 </div>
                 <div class="recap rv d3">
                     <div class="recap-item">
                         <div class="recap-left">
                             <div class="recap-label">Production Collagen Days</div>
-                            <div class="recap-sub">10 unites facturees (tranche 1)</div>
+                            <div class="recap-sub">10 unites facturees &middot; tranche 1 &middot; 200 &#8364; / unite</div>
                         </div>
                         <div class="recap-amt">2 000,00 &#8364;</div>
                     </div>
@@ -368,7 +525,7 @@
         <div class="dots" id="dots"></div>
         <button class="nav-btn" onclick="go(1)" aria-label="Suivant">&#8594;</button>
     </div>
-    <div class="counter"><span class="c" id="cur">01</span> / <span id="tot">05</span></div>
+    <div class="counter"><span class="c" id="cur">01</span> / <span id="tot">07</span></div>
 
     <script>
         const slides=document.querySelectorAll('.slide'),N=slides.length;
