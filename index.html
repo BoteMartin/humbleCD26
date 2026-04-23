@@ -172,6 +172,30 @@
         .strat-t{font-size:0.95rem;font-weight:600;color:var(--text);margin-bottom:.4rem;line-height:1.35}
         .strat-d{font-size:0.78rem;color:var(--text-mute);line-height:1.5}
 
+        /* Dispositif : 3 blocs */
+        .disp-grid{
+            margin-top:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;align-items:stretch;
+        }
+        .disp-card{
+            background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+            padding:1.5rem 1.35rem;transition:border-color .3s;
+            display:flex;flex-direction:column;
+        }
+        .disp-card:hover{border-color:var(--gold-border)}
+        .disp-n{
+            font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:1.1rem;
+            letter-spacing:-0.01em;line-height:1.25;
+            padding-bottom:.85rem;border-bottom:1px solid var(--border);
+        }
+        .disp-l{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+        .disp-l li{
+            font-size:0.85rem;color:var(--text-sec);padding-left:1rem;position:relative;line-height:1.4;
+        }
+        .disp-l li::before{
+            content:'';position:absolute;left:0;top:.55rem;
+            width:4px;height:4px;border-radius:50%;background:var(--gold);
+        }
+
         /* Tranches */
         .tranches{
             margin-top:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;
@@ -277,6 +301,7 @@
             .slide{padding:4rem 3rem 5.5rem}
             .brand{top:1.5rem;right:2rem}
             .strat{grid-template-columns:1fr;gap:.6rem}
+            .disp-grid{grid-template-columns:1fr;gap:.7rem}
         }
 
         @media(max-width:680px){
@@ -344,26 +369,34 @@
         <!-- 2. Production -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="tag rv">Le dispositif</div>
-                <h2 class="heading rv d1">Ce que vous <strong>recevez</strong></h2>
-                <p class="desc rv d2">Un package complet : 30 emails produits sur trois semaines, plus la stratégie qui les structure. La stratégie a été livrée en amont, la production démarre ensuite.</p>
-                <div class="hero-combo rv d3">
-                    <div class="hero-block">
-                        <div class="hero-block-n">30</div>
-                        <div class="hero-block-sub">emails</div>
+                <div class="tag rv">Collagen Days</div>
+                <h2 class="heading rv d1">Le <strong>dispositif</strong></h2>
+                <p class="desc rv d2">Trois blocs pour opérer Collagen Days de bout en bout.</p>
+                <div class="disp-grid rv d3">
+                    <div class="disp-card">
+                        <div class="disp-n">30 livrables</div>
+                        <ul class="disp-l">
+                            <li>Popups</li>
+                            <li>Newsletters</li>
+                            <li>WhatsApp</li>
+                            <li>Flows</li>
+                        </ul>
                     </div>
-                    <div class="hero-plus">+</div>
-                    <div class="hero-block strat">
-                        <div class="hero-block-t">Stratégie</div>
-                        <div class="hero-block-sub">complète</div>
+                    <div class="disp-card">
+                        <div class="disp-n">Stratégie complète</div>
+                        <ul class="disp-l">
+                            <li>Livrable Miro</li>
+                            <li>Briefs</li>
+                            <li>Journées thématiques</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="ic rv d4">
-                    <div class="ir">
-                        <div class="ir-l">Les 30 emails<div class="ir-sub">Newsletters Collagen Days, flows actualisés, popups on-site</div></div>
-                    </div>
-                    <div class="ir">
-                        <div class="ir-l">La stratégie<div class="ir-sub">Plan éditorial, angles et briefs, coordination équipe</div></div>
+                    <div class="disp-card">
+                        <div class="disp-n">Suivi et reporting</div>
+                        <ul class="disp-l">
+                            <li>Monitoring quotidien</li>
+                            <li>Ajustements en cours</li>
+                            <li>Debrief final</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -401,7 +434,7 @@
             <div class="slide-inner">
                 <div class="tag rv">Grille BOTE</div>
                 <h2 class="heading rv d1">Grille <strong>dégressive</strong></h2>
-                <p class="desc rv d2">Plus le volume facturé est élevé, plus le prix unitaire baisse. Pour ce temps fort, le volume (10 unités) se situe dans la tranche 1.</p>
+                <p class="desc rv d2">Plus le volume facturé est élevé, plus le prix unitaire baisse. Sur Collagen Days, le volume facturé (10 unités) se situe dans la tranche 1.</p>
                 <div class="tranches rv d3">
                     <div class="tr-card active">
                         <div class="tr-badge">Applicable</div>
@@ -435,15 +468,7 @@
             <div class="slide-inner">
                 <div class="tag rv">Récapitulatif</div>
                 <h2 class="heading rv d1">Total <strong>projet</strong></h2>
-                <div class="inclus rv d2">
-                    <div class="inclus-t">Ce que couvre le forfait</div>
-                    <ul class="inclus-l">
-                        <li>Stratégie complète du temps fort</li>
-                        <li>Production des 30 livrables</li>
-                        <li>Suivi pendant la période</li>
-                        <li>Reporting post-temps fort</li>
-                    </ul>
-                </div>
+                <p class="desc rv d2">Dispositif complet (30 livrables + stratégie + suivi et reporting) pour un total facturé de 2 000 € HT.</p>
                 <div class="recap rv d3">
                     <div class="recap-item">
                         <div class="recap-left">
